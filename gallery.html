@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Works | Ryan Tubbs</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Quicksand:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header style="min-height: 20vh;">
+        <h1>Gallery</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main id="full-gallery-page">
+        <div class="filter-controls">
+            <button class="tactile-btn" onclick="filterGallery('all')">All</button>
+            <button class="tactile-btn" onclick="filterGallery('drawings')">Drawings</button>
+            <button class="tactile-btn" onclick="filterGallery('dinoridge')">Dino Ridge</button>
+            <button class="tactile-btn" onclick="filterGallery('stickers')">Stickers</button>
+        </div>
+
+       <div class="gallery-grid">
+           <div class="gallery-item" data-category="drawings" data-year="2025" data-tooltip="Giraffe Moon, watercolor">
+               <img src="images/collections/drawings/draw-giraffes.jpg">
+               <span class="year-label">December 2025</span>
+           </div>
+           <div class="gallery-item" data-category="drawings" data-year="2026" data-tooltip="hockey sketch, ink">
+               <img src="images/collections/drawings/draw-hockey.jpg">
+               <span class="year-label">January 2026</span>
+           </div>
+           <div class="gallery-item" data-category="drawings" data-year="2025" data-tooltip="Lucy, ink">
+               <img src="images/collections/drawings/draw-lucyink.jpg">
+               <span class="year-label">January 2026</span>
+           </div>
+           <div class="gallery-item" data-category="drawings" data-year="2025" data-tooltip="Lucy watercolor sketch">
+               <img src="images/collections/drawings/draw-lucywatercolor.jpg">
+               <span class="year-label">December 2025</span>
+           </div>
+           <div class="gallery-item" data-category="drawings" data-year="2025" data-tooltip="Bullfrog (for Nate), watercolor and ink">
+               <img src="images/collections/drawings/draw-toad.jpg">
+               <span class="year-label">December 2025</span>
+           </div>
+           <div class="gallery-item" data-category="drawings" data-year="2025" data-tooltip="Tomas (for Michelle), watercolor and graphite">
+               <img src="images/collections/drawings/draw-tomas.jpg">
+               <span class="year-label">December 2025</span>
+           </div>
+           <div class="gallery-item" data-category="drawings" data-year="2025" data-tooltip="sketchbook Scyther, ink">
+               <img src="images/collections/drawings/draw-scyther.jpg">
+               <span class="year-label">October 2025</span>
+           </div>
+
+           <div class="gallery-item" data-category="dinoridge" data-year="2024" data-tooltip="35 Year Anniversary">
+               <img src="images/collections/dinoridge/dinoridge-35anni.png">
+               <span class="year-label">January 2024</span>
+           </div>
+           <div class="gallery-item" data-category="stickers" data-year="2023" data-tooltip="Beach Party Gala">
+               <img src="images/collections/stickers/sticker-beachparty.png">
+               <span class="year-label">April 2023</span>
+           </div>
+           <div class="gallery-item" data-category="stickers" data-year="2024" data-tooltip="Colorado Gives Day 2024 (1)">
+               <img src="images/collections/stickers/sticker-cogives1.png">
+               <span class="year-label">October 2024</span>
+           </div>
+           <div class="gallery-item" data-category="stickers" data-year="2024" data-tooltip="Colorado Gives Day 2024 (2)">
+               <img src="images/collections/stickers/sticker-cogives2.png">
+               <span class="year-label">October 2024</span>
+           </div>
+           <div class="gallery-item" data-category="stickers" data-year="2024" data-tooltip="Colorado Gives Day 2024 (3)">
+               <img src="images/collections/stickers/sticker-cogives3.png">
+               <span class="year-label">October 2024</span>
+           </div>
+           <div class="gallery-item" data-category="stickers" data-year="2024" data-tooltip="Colorado Gives Day 2024 (4)">
+               <img src="images/collections/stickers/sticker-cogives4.png">
+               <span class="year-label">October 2024</span>
+           </div>
+           <div class="gallery-item" data-category="stickers" data-year="2024" data-tooltip="Dino Ridge Field Trips">
+               <img src="images/collections/stickers/sticker-fieldtrip.png">
+               <span class="year-label">August 2024</span>
+           </div>
+           <div class="gallery-item" data-category="stickers" data-year="2023" data-tooltip="Lecture Series 2023">
+               <img src="images/collections/stickers/sticker-lectures.png">
+               <span class="year-label">April 2023</span>
+           </div>
+           <div class="gallery-item" data-category="stickers" data-year="2023" data-tooltip="Peace, Love & Fossils">
+               <img src="images/collections/stickers/sticker-plf.png">
+               <span class="year-label">January 2023</span>
+           </div>
+           <div class="gallery-item" data-category="stickers" data-year="2022" data-tooltip="Science Quiz Bowl 2022">
+               <img src="images/collections/stickers/sticker-qb1.png">
+               <span class="year-label">September 2022</span>
+           </div>
+           <div class="gallery-item" data-category="stickers" data-year="2023" data-tooltip="Science Quiz Bowl 2023">
+               <img src="images/collections/stickers/sticker-qb3.png">
+               <span class="year-label">September 2023</span>
+           </div>
+           <div class="gallery-item" data-category="stickers" data-year="2022" data-tooltip="Pteroceratops">
+               <img src="images/collections/stickers/sticker-trike.png">
+               <span class="year-label">June 2022</span>
+           </div>
+           <div class="gallery-item" data-category="stickers" data-year="2024" data-tooltip="PROTECT OUR FOSSILS License Plate Tie-In">
+               <img src="images/collections/stickers/sticker-turkeys.png">
+               <span class="year-label">November 2024</span>
+           </div>
+
+           <div class="gallery-item" data-category="dinoridge" data-year="2024" data-tooltip="Colorado Coloring Page: Lark Bunting">
+               <img src="images/collections/dinoridge/colorpage-bird.png">
+               <span class="year-label">August 2024</span>
+           </div>
+           <div class="gallery-item" data-category="dinoridge" data-year="2024" data-tooltip="Colorado Coloring Page: Stegosaurus">
+               <img src="images/collections/dinoridge/colorpage-stego.png">
+               <span class="year-label">August 2024</span>
+           </div>
+           <div class="gallery-item" data-category="dinoridge" data-year="2024" data-tooltip="Colorado Coloring Page: Greenback Cutthroat Trout">
+               <img src="images/collections/dinoridge/colorpage-trout.png">
+               <span class="year-label">August 2024</span>
+           </div>
+           <div class="gallery-item" data-category="dinoridge" data-year="2024" data-tooltip="Colorado Coloring Page: Bighorn Sheep">
+               <img src="images/collections/dinoridge/colorpage-sheep.png">
+               <span class="year-label">August 2024</span>
+           </div>
+           <div class="gallery-item" data-category="dinoridge" data-year="2024" data-tooltip="Colorado Coloring Page: Columbine Flower">
+               <img src="images/collections/dinoridge/colorpage-flower.png">
+               <span class="year-label">August 2024</span>
+           </div>
+           <div class="gallery-item" data-category="dinoridge" data-year="2022" data-tooltip="Science Quiz Bowl 2022">
+               <img src="images/collections/dinoridge/dinoridge-qb.png">
+               <span class="year-label">September 2022</span>
+           </div>
+           <div class="gallery-item" data-category="dinoridge" data-year="2023" data-tooltip="Science Quiz Bowl 2023">
+               <img src="images/collections/dinoridge/dinoridge-qb3.png">
+               <span class="year-label">September 2023</span>
+           </div>
+           <div class="gallery-item" data-category="dinoridge" data-year="2024" data-tooltip="Science Quiz Bowl 2024">
+               <img src="images/collections/dinoridge/dinoridge-qb4.png">
+               <span class="year-label">September 2024</span>
+           </div>
+           <div class="gallery-item" data-category="dinoridge" data-year="2025" data-tooltip="Science Quiz Bowl 2025">
+               <img src="images/collections/dinoridge/dinoridge-qb2.png">
+               <span class="year-label">September 2025</span>
+           </div>
+           <div class="gallery-item" data-category="dinoridge" data-year="2024" data-tooltip="Dino Ridge Field Trips Handout">
+               <img src="images/collections/dinoridge/dinoridge-fieldtrip.png">
+               <span class="year-label">August 2024</span>
+           </div>
+           <div class="gallery-item" data-category="dinoridge" data-year="2022" data-tooltip="The Land Before Podcast Banner">
+               <img src="images/collections/dinoridge/dinoridge-podcastbanner.png">
+               <span class="year-label">April 2022</span>
+           </div>
+           <div class="gallery-item" data-category="dinoridge" data-year="2023" data-tooltip="Dino Ridge Beach Party Gala">
+               <img src="images/collections/dinoridge/dinoridge-beachparty.png">
+               <span class="year-label">April 2023</span>
+           </div>
+    </div>
+    </main>
+
+    <script>
+    function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

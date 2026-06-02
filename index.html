@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ryan Tubbs | Digital Artist Portfolio</title>
+    
+    <script>
+        if (sessionStorage.getItem('hasSeenDoors')) {
+            document.documentElement.classList.add('hide-doors-instantly');
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css"> <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Quicksand:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="welcome-wrapper" onclick="openDoors()">
+        
+        <div class="door-layer layer-back">
+            <div class="door left-door"></div>
+            <div class="door right-door"></div>
+        </div>
+
+        <div class="door-layer layer-front">
+            <div class="door left-door">
+                <div class="welcome-text"><h1>Welcome Home,</h1></div>
+            </div>
+            <div class="door right-door">
+                <div class="welcome-text"><h1>Weary Traveler</h1></div>
+            </div>
+        </div>
+    </div>
+<header>
+    <h1>Ryan Tubbs</h1>
+    <p>Digital Artist & Illustrator</p>
+    <nav>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section id="gallery">
+    <h2>Look At This Stuff!!!</h2>
+    <div id="doodle-left" class="margin-doodle" 
+    style="background-image: url('images/doodle1-sprite.png'); left: 20px; top: 100px;">
+</div>
+
+    <div class="art-grid">
+        <div class="image-container" data-category="dinoridge" data-year="2024" data-tooltip="35 Year Anniversary">
+            <img src="images/collections/dinoridge/dinoridge-35anni.png">
+        </div>
+        <div class="image-container" data-category="drawings" data-year="2025" data-tooltip="Giraffe Moon, watercolor">
+            <img src="images/collections/drawings/draw-giraffes.jpg">
+        </div>
+        <div class="image-container" data-category="drawings" data-year="2025" data-tooltip="Lucy, ink">
+            <img src="images/collections/drawings/draw-lucyink.jpg">
+        </div>
+        <div class="image-container" data-category="stickers" data-year="2024" data-tooltip="Colorado Gives Day 2024 (4)">
+               <img src="images/collections/stickers/sticker-cogives4.png">
+        </div>
+        <div class="image-container" data-category="dinoridge" data-year="2023" data-tooltip="Science Quiz Bowl 2023">
+            <img src="images/collections/stickers/sticker-qb3.png">
+        </div>
+        <div class="image-container" data-category="dinoridge" data-year="2022" data-tooltip="The Land Before Podcast Banner">
+            <img src="images/collections/dinoridge/dinoridge-podcastbanner.png">
+        </div>
+        <div class="image-container" data-category="dinoridge" data-year="2023" data-tooltip="Dino Ridge Beach Party Gala">
+            <img src="images/collections/dinoridge/dinoridge-beachparty.png">
+        </div>
+        <div class="image-container">
+            <a href="full-gallery.html" class="tactile-btn" style="margin-top: 50px;">View All Art</a>
+        </div>
+    </div>
+</section>
+
+<section id="collections">
+    <h2>Collections</h2>
+    <div id="doodle-right" class="margin-doodle" style="background-image: url('images/doodle2-sprite.png'); right: 20px; bottom: 20px;"></div>
+
+    <div class="blob-links"> <a href="gallery.html" class="blob-btn">Drawings</a>
+        <a href="gallery.html" class="blob-btn">Dino Ridge</a>
+        <a href="gallery.html" class="blob-btn">Stickers</a>
+    </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const wrapper = document.getElementById('welcome-wrapper');
+    const hasSeenDoors = sessionStorage.getItem('hasSeenDoors');
+
+    if (hasSeenDoors) {
+        // If they've seen them, delete the wrapper immediately so there's no flicker
+        if (wrapper) wrapper.style.display = 'none';
+        
+        // Ensure the vibe switcher is visible since the doors didn't fade it in
+        const switcher = document.querySelector('.vibe-switcher');
+        if (switcher) switcher.style.opacity = '1';
+    }
+});
+
+function openDoors() {
+    const wrapper = document.getElementById('welcome-wrapper');
+    if (!wrapper || wrapper.classList.contains('opened')) return;
+
+    // Set the "flag" so they don't see it again this session
+    sessionStorage.setItem('hasSeenDoors', 'true');
+
+    window.scrollTo(0, 0);
+    wrapper.classList.add('opened');
+    
+    const switcher = document.querySelector('.vibe-switcher');
+    if(switcher) switcher.style.opacity = '1';
+
+    setTimeout(() => {
+        wrapper.style.display = 'none';
+    }, 4500);
+}
+
+// --- CAROUSEL PHYSICS ---
+const slider = document.querySelector('#gallery');
+const inner = document.querySelector('.art-grid');
+
+if (slider && inner) {
+    let isDown = false;
+    let startX;
+    let scrollLeft = 0; // FIXED: Set to 0 to start on left
+    let velX = 0;
+    let momentX = 0;
+
+    const friction = 0.85;
+
+    function update() {
+        const rightLimit = -(inner.scrollWidth - window.innerWidth + 200);
+        const leftLimit = 100;
+
+        if (!isDown) {
+            velX *= friction;
+            scrollLeft += velX;
+
+            if (scrollLeft > leftLimit) {
+                scrollLeft += (leftLimit - scrollLeft) * 0.15;
+            }
+            if (scrollLeft < rightLimit) {
+                scrollLeft += (rightLimit - scrollLeft) * 0.15;
+            }
+            
+            inner.style.transform = `translateX(${scrollLeft}px)`;
+        }
+        requestAnimationFrame(update);
+    }
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - scrollLeft;
+        velX = 0;
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        const x = e.pageX - startX;
+        scrollLeft = x;
+        velX = x - momentX;
+        momentX = x;
+        inner.style.transform = `translateX(${scrollLeft}px)`;
+    });
+
+    slider.addEventListener('mouseup', () => { isDown = false; });
+    slider.addEventListener('mouseleave', () => { isDown = false; });
+
+    update();
+}
+
+
+function setVibe(vibe) {
+    const root = document.documentElement;
+    
+    if (vibe === 'earthy') {
+        // Your original grainy cream/brown
+        root.style.setProperty('--bg-color', '#fdfaf5'); // Very light cream
+        root.style.setProperty('--door-primary', '#5d4037');
+        root.style.setProperty('--door-secondary', '#3e4a3d');
+        root.style.setProperty('--text-main', '#4a3f35');
+    } else if (vibe === 'midnight') {
+        // "Blueprint" vibe: light dusty blue paper
+        root.style.setProperty('--bg-color', '#eef2f6'); 
+        root.style.setProperty('--door-primary', '#34495e');
+        root.style.setProperty('--door-secondary', '#5d6d7e');
+        root.style.setProperty('--text-main', '#2c3e50');
+    } else if (vibe === 'neon') {
+        // "Rosewater" vibe: light warm pink/peach
+        root.style.setProperty('--bg-color', '#fff5f5');
+        root.style.setProperty('--door-primary', '#d4a373');
+        root.style.setProperty('--door-secondary', '#faedcd');
+        root.style.setProperty('--text-main', '#606c38');
+    }
+}
+
+</script>
+
+<div class="vibe-switcher">
+    <p>switch up da vibe:</p>
+    <div class="swatches">
+        <button class="swatch earthy" onclick="setVibe('earthy')"></button>
+        <button class="swatch midnight" onclick="setVibe('midnight')"></button>
+        <button class="swatch neon" onclick="setVibe('neon')"></button>
+    </div>
+</div>
+
+</body>
+</html>
