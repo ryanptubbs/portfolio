@@ -345,7 +345,7 @@ section {
     to { background-position: -300px; }
 }
 
-#gallery-page {
+#full-gallery-page {
     padding: 50px 5%;
 }
 
@@ -467,4 +467,155 @@ section {
 
 .hide-doors-instantly .vibe-switcher {
     opacity: 1 !important;
+}
+
+/* --- 5. GENERIC HEADINGS (about / contact / other inner pages) --- */
+#about-page h2,
+#contact-page h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#about-page section,
+#contact-page section {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* --- 6. ABOUT PAGE --- */
+#about-intro {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    text-align: left;
+}
+
+.about-photo-col {
+    flex: 0 0 260px;
+}
+
+.about-photo-placeholder {
+    width: 260px;
+    height: 260px;
+    border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
+    border: 3px dashed var(--door-primary);
+    background: rgba(93, 64, 55, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+    color: var(--door-primary);
+}
+
+.about-text-col {
+    flex: 1 1 380px;
+}
+
+.about-text-col h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.2rem;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.about-text-col p {
+    max-width: 60ch;
+}
+
+#about-skills h2 {
+    margin-bottom: 20px;
+}
+
+.about-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+.about-card {
+    background: var(--bg-color);
+    border: 2px solid var(--door-primary);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 6px 6px 0px var(--door-primary);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px var(--door-primary);
+}
+
+.about-card h3 {
+    font-family: 'Fraunces', serif;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#about-currently {
+    display: flex;
+    justify-content: center;
+}
+
+.currently-note {
+    background: var(--accent-yellow);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+    padding: 24px 30px;
+    max-width: 420px;
+    transform: rotate(-1.5deg);
+    color: #4a3f35;
+}
+
+.currently-note h3 {
+    font-family: 'Fraunces', serif;
+    margin-top: 0;
+}
+
+.currently-note ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.currently-note li {
+    margin-bottom: 8px;
+}
+
+/* --- 7. CONTACT PAGE --- */
+#contact-intro {
+    text-align: center;
+}
+
+.contact-subtext {
+    max-width: 55ch;
+    margin: 0 auto 30px;
+}
+
+.contact-email-btn {
+    font-size: 1.15rem;
+    padding: 18px 36px;
+}
+
+#contact-availability h2 {
+    margin-bottom: 20px;
+}
+
+.contact-social {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
