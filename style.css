@@ -1,9 +1,9 @@
 /* --- 1. THE FOUNDATION --- */
 :root {
-    --bg-color: #fdfaf5;
-    --text-main: #4a3f35;
-    --door-primary: #5d4037;
-    --door-secondary: #3e4a3d;
+    --bg-color: #f6f8ef;
+    --text-main: #33421f;
+    --door-primary: #166534;
+    --door-secondary: #7c2d12;
     --accent-yellow: #fff9c4;
 }
 
@@ -69,7 +69,8 @@ body::before {
     font-family: 'Fraunces', serif;
     font-size: 3.5rem;
     padding: 0 40px;
-    color: var(--bg-color); /* Contrast against the dark doors */
+    color: #ffffff; /* Always white — every theme's door colors are kept dark enough to support this */
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.25);
     white-space: nowrap;
 }
 
@@ -158,6 +159,7 @@ nav a { color: white; text-decoration: none; font-weight: bold; font-family: 'Qu
     display: flex !important; 
     flex-direction: row !important; /* FORCE horizontal */
     flex-wrap: nowrap !important;   /* STOP stacking */
+    align-items: center;            /* Center each item vertically instead of stretch-hanging from the top */
     width: max-content;             /* Essential: lets the grid be wider than the screen */
     gap: 60px;
     padding-left: 100px;            /* Starting padding */
@@ -284,9 +286,9 @@ nav a { color: white; text-decoration: none; font-weight: bold; font-family: 'Qu
 
 .swatches { display: flex; gap: 10px; margin-top: 5px; }
 .swatch { width: 25px; height: 25px; border-radius: 50%; border: 2px solid white; cursor: pointer; }
-.swatch.earthy { background: #5d4037; }
-.swatch.midnight { background: #34495e; }
-.swatch.neon { background: #d4a373; }
+.swatch.bayou { background: #0f2e3d; }
+.swatch.earthy { background: #166534; }
+.swatch.bold { background: #111111; }
 
 section {
     position: relative; /* REQUIRED for pinned doodles */
@@ -595,27 +597,118 @@ section {
 }
 
 /* --- 7. CONTACT PAGE --- */
-#contact-intro {
-    text-align: center;
+#contact-page {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+#contact-page section {
+    padding: 0;
+}
+
+.contact-columns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 60px;
+    text-align: left;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#contact-page .contact-columns > section {
+    flex: 1 1 320px;
+    width: auto;
+    max-width: 380px;
+    margin: 0;
+}
+
+#contact-page .contact-columns h2 {
+    text-align: left;
 }
 
 .contact-subtext {
-    max-width: 55ch;
-    margin: 0 auto 30px;
+    max-width: 40ch;
+    margin: 0 0 24px;
 }
 
 .contact-email-btn {
-    font-size: 1.15rem;
-    padding: 18px 36px;
+    font-size: 1.05rem;
+    padding: 16px 30px;
 }
 
-#contact-availability h2 {
-    margin-bottom: 20px;
+#contact-availability .blob-links {
+    justify-content: flex-start;
 }
 
-.contact-social {
+/* --- BUSINESS CARD POPUP --- */
+.card-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
+    z-index: 8000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.card-overlay.open {
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.business-card {
+    position: relative;
+    background: var(--bg-color);
+    color: var(--text-main);
+    border: 3px solid var(--door-primary);
+    border-radius: 12px;
+    box-shadow: 10px 10px 0px var(--door-primary);
+    padding: 34px 40px;
+    max-width: 300px;
+    width: 90%;
+    text-align: left;
+    font-family: 'Quicksand', sans-serif;
+    transform: rotate(-2deg) scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.card-overlay.open .business-card {
+    transform: rotate(-2deg) scale(1);
+}
+
+.business-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    margin: 0 0 4px;
+}
+
+.card-role {
+    font-weight: 600;
+    margin: 0 0 18px;
+    opacity: 0.85;
+}
+
+.card-line {
+    margin: 0 0 8px;
+}
+
+.card-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-main);
+    font-family: inherit;
 }
